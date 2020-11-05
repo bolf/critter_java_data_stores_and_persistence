@@ -1,4 +1,4 @@
-package com.udacity.jdnd.course3.critter.user;
+package com.udacity.jdnd.course3.critter.entities.user;
 
 import java.util.List;
 
@@ -53,3 +53,4 @@ public class CustomerDTO {
         this.petIds = petIds;
     }
 }
+

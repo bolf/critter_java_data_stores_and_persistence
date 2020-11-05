@@ -2,12 +2,10 @@ package com.udacity.jdnd.course3.critter;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.udacity.jdnd.course3.critter.pet.PetController;
-import com.udacity.jdnd.course3.critter.pet.PetDTO;
-import com.udacity.jdnd.course3.critter.pet.PetType;
-import com.udacity.jdnd.course3.critter.schedule.ScheduleController;
-import com.udacity.jdnd.course3.critter.schedule.ScheduleDTO;
-import com.udacity.jdnd.course3.critter.user.*;
+import com.udacity.jdnd.course3.critter.controller.*;
+import com.udacity.jdnd.course3.critter.entities.pet.*;
+import com.udacity.jdnd.course3.critter.entities.schedule.*;
+import com.udacity.jdnd.course3.critter.entities.user.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
