@@ -1,10 +1,12 @@
 package com.udacity.jdnd.course3.critter.controller;
 
+import com.udacity.jdnd.course3.critter.entities.user.Employee;
 import com.udacity.jdnd.course3.critter.repository.CustomerRepository;
 import com.udacity.jdnd.course3.critter.entities.user.Customer;
-import com.udacity.jdnd.course3.critter.entities.user.CustomerDTO;
-import com.udacity.jdnd.course3.critter.entities.user.EmployeeDTO;
-import com.udacity.jdnd.course3.critter.entities.user.EmployeeRequestDTO;
+import com.udacity.jdnd.course3.critter.entities.user.DTOs.CustomerDTO;
+import com.udacity.jdnd.course3.critter.entities.user.DTOs.EmployeeDTO;
+import com.udacity.jdnd.course3.critter.entities.user.DTOs.EmployeeRequestDTO;
+import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
 import com.udacity.jdnd.course3.critter.repository.PetRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 /**
@@ -28,11 +31,12 @@ public class UserController {
     private CustomerRepository customerRepository;
     @Autowired
     private PetRepository petRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
-        Customer customer = convertCustomerDTOToCustomer(customerDTO);
-        customerDTO.setId(customerRepository.save(customer).getId());
+        customerDTO.setId(customerRepository.save(convertCustomerDTOToCustomer(customerDTO)).getId());
         return customerDTO;
     }
 
@@ -50,12 +54,17 @@ public class UserController {
 
     @PostMapping("/employee")
     public EmployeeDTO saveEmployee(@RequestBody EmployeeDTO employeeDTO) {
-        throw new UnsupportedOperationException();
+        employeeDTO.setId(employeeRepository.save(convertEmployeeDTOToEmployee(employeeDTO)).getId());
+        return employeeDTO;
     }
 
     @PostMapping("/employee/{employeeId}")
     public EmployeeDTO getEmployee(@PathVariable long employeeId) {
-        throw new UnsupportedOperationException();
+        try{
+            return convertEmployeeToEmployeeDTO(employeeRepository.findById(employeeId).get());
+        }catch (NoSuchElementException e){
+            return null;
+        }
     }
 
     @PutMapping("/employee/{employeeId}")
@@ -82,6 +91,18 @@ public class UserController {
         CustomerDTO customerDTO = new CustomerDTO();
         BeanUtils.copyProperties(customer,customerDTO);
         return customerDTO;
+    }
+
+    private static Employee convertEmployeeDTOToEmployee(EmployeeDTO employeeDTO){
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO,employee);
+        return employee;
+    }
+
+    private static EmployeeDTO convertEmployeeToEmployeeDTO(Employee employee){
+        EmployeeDTO employeeDTO = new EmployeeDTO();
+        BeanUtils.copyProperties(employee,employeeDTO);
+        return employeeDTO;
     }
 
 }

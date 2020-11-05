@@ -1,4 +1,4 @@
-package com.udacity.jdnd.course3.critter.entities.user;
+package com.udacity.jdnd.course3.critter.entities.user.DTOs;
 
 import java.util.List;
 
