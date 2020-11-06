@@ -31,6 +31,14 @@ public class UserService {
         }
     }
 
+    public Customer findCustomerByPetId(Long id){
+        try {
+            return customerRepository.findCustomerByPetsId(id);
+        }catch (NoSuchElementException e){
+            return null;
+        }
+    }
+
     public Iterable<Customer> getAllCustomers(){
         return customerRepository.findAll();
     }
@@ -46,4 +54,5 @@ public class UserService {
             return null;
         }
     }
+
 }
