@@ -23,7 +23,7 @@ public class Customer {
     private String phoneNumber;
     private String notes;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = {CascadeType.ALL})
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner", cascade = {CascadeType.REMOVE})
     private List<Pet> pets;
 
     public void addPet(Pet pet){
