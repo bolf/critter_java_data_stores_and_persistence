@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Handles web requests related to Users.
@@ -80,21 +81,20 @@ public class UserController {
      *  and skills and none that do not*/
     @GetMapping("/employee/availability")
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeDTO) {
-        List<Employee> employees = userService.findEmployeesForService(employeeDTO.getSkills(),employeeDTO.getDate());
-        return  null;
+        return userService.findEmployeesForService(employeeDTO.getSkills(),employeeDTO.getDate())
+                .stream().map(this::convertEmployeeToEmployeeDTO).collect(Collectors.toList());
     }
-
 
     /**
      * Transformation DTO -> User & User -> DTO
      */
-    private static Customer convertCustomerDTOToCustomer(CustomerDTO customerDTO){
+    private Customer convertCustomerDTOToCustomer(CustomerDTO customerDTO){
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDTO,customer);
         return customer;
     }
 
-    private static CustomerDTO convertCustomerToCustomerDTO(Customer customer){
+    private CustomerDTO convertCustomerToCustomerDTO(Customer customer){
         CustomerDTO customerDTO = new CustomerDTO();
         BeanUtils.copyProperties(customer, customerDTO);
         if (customer.getPets() != null) {
@@ -104,13 +104,13 @@ public class UserController {
         return customerDTO;
     }
 
-    private static Employee convertEmployeeDTOToEmployee(EmployeeDTO employeeDTO){
+    private Employee convertEmployeeDTOToEmployee(EmployeeDTO employeeDTO){
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO,employee);
         return employee;
     }
 
-    private static EmployeeDTO convertEmployeeToEmployeeDTO(Employee employee){
+    private EmployeeDTO convertEmployeeToEmployeeDTO(Employee employee){
         EmployeeDTO employeeDTO = new EmployeeDTO();
         BeanUtils.copyProperties(employee,employeeDTO);
         return employeeDTO;

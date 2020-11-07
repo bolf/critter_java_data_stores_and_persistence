@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 import javax.transaction.Transactional;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -70,6 +71,13 @@ public class UserService {
     }
 
     public List<Employee> findEmployeesForService(Set<EmployeeSkill> skills, LocalDate date) {
-        return null;
+        List<Employee> foundEmployees = new ArrayList<>();
+        Iterable<Employee> employees = employeeRepository.findEmployeeByDaysAvailable(date.getDayOfWeek());
+        employees.forEach(employee -> {
+            if (employee.getSkills().containsAll(skills)) {
+                foundEmployees.add(employee);
+            }
+        });
+        return foundEmployees;
     }
 }
