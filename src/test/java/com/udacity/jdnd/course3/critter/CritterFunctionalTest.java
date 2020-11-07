@@ -241,13 +241,13 @@ public class CritterFunctionalTest {
         compareSchedules(sched3, scheds2c.get(1));
     }
 
-
     private static EmployeeDTO createEmployeeDTO() {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.setName("TestEmployee");
         employeeDTO.setSkills(Sets.newHashSet(EmployeeSkill.FEEDING, EmployeeSkill.PETTING));
         return employeeDTO;
     }
+
     private static CustomerDTO createCustomerDTO() {
         CustomerDTO customerDTO = new CustomerDTO();
         customerDTO.setName("TestEmployee");
@@ -302,7 +302,6 @@ public class CritterFunctionalTest {
         Assertions.assertEquals(sched1.getEmployeeIds(), sched2.getEmployeeIds());
         Assertions.assertEquals(sched1.getDate(), sched2.getDate());
     }
-
 }
 
 

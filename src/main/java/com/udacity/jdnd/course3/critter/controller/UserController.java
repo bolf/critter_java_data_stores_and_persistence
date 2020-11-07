@@ -73,12 +73,15 @@ public class UserController {
 
     @PutMapping("/employee/{employeeId}")
     public void setAvailability(@RequestBody Set<DayOfWeek> daysAvailable, @PathVariable long employeeId) {
-        throw new UnsupportedOperationException();
+        userService.setEmployeeAvailability(daysAvailable, employeeId);
     }
 
+    /** returns all saved employees that have the requested availability
+     *  and skills and none that do not*/
     @GetMapping("/employee/availability")
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeDTO) {
-        throw new UnsupportedOperationException();
+        List<Employee> employees = userService.findEmployeesForService(employeeDTO.getSkills(),employeeDTO.getDate());
+        return  null;
     }
 
 

@@ -2,6 +2,7 @@ package com.udacity.jdnd.course3.critter.service;
 
 import com.udacity.jdnd.course3.critter.entities.user.Customer;
 import com.udacity.jdnd.course3.critter.entities.user.Employee;
+import com.udacity.jdnd.course3.critter.entities.user.EmployeeSkill;
 import com.udacity.jdnd.course3.critter.repository.CustomerRepository;
 import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,11 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.Persistence;
 import javax.transaction.Transactional;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -55,4 +59,17 @@ public class UserService {
         }
     }
 
+    public void setEmployeeAvailability(Set<DayOfWeek> daysAvailable, Long employeeId) {
+        try{
+            Employee employee = employeeRepository.findById(employeeId).get();
+            employee.setDaysAvailable(daysAvailable);
+            employeeRepository.save(employee);
+        }catch (NoSuchElementException e){
+            //some NoSuchElementException handling
+        }
+    }
+
+    public List<Employee> findEmployeesForService(Set<EmployeeSkill> skills, LocalDate date) {
+        return null;
+    }
 }

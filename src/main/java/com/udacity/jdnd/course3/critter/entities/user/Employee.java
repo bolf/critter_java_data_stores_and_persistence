@@ -18,10 +18,10 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated
     private Set<EmployeeSkill> skills;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated
     private Set<DayOfWeek> daysAvailable;
 
