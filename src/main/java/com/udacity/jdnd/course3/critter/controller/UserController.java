@@ -9,6 +9,7 @@ import com.udacity.jdnd.course3.critter.entities.user.DTOs.EmployeeDTO;
 import com.udacity.jdnd.course3.critter.entities.user.DTOs.EmployeeRequestDTO;
 import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
 import com.udacity.jdnd.course3.critter.repository.PetRepository;
+import com.udacity.jdnd.course3.critter.service.PetService;
 import com.udacity.jdnd.course3.critter.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class UserController {
     @Autowired
     UserService userService;
     @Autowired
-    private PetRepository petRepository;
+    PetService petService;
 
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
@@ -91,13 +92,18 @@ public class UserController {
     private Customer convertCustomerDTOToCustomer(CustomerDTO customerDTO){
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDTO,customer);
+        if(!(customerDTO.getPetIds() == null || customerDTO.getPetIds().size() == 0)){
+            ArrayList<Pet> pets = new ArrayList<>();
+            petService.getAllPetsById(customerDTO.getPetIds()).forEach(pet -> pets.add(pet));
+            customer.setPets(pets);
+        }
         return customer;
     }
 
     private CustomerDTO convertCustomerToCustomerDTO(Customer customer){
         CustomerDTO customerDTO = new CustomerDTO();
         BeanUtils.copyProperties(customer, customerDTO);
-        if (customer.getPets() != null) {
+        if (!(customer.getPets() == null || customer.getPets().size() == 0)) {
             customerDTO.setPetIds(new ArrayList<>());
             customer.getPets().forEach(pet -> customerDTO.getPetIds().add(pet.getId()));
         }

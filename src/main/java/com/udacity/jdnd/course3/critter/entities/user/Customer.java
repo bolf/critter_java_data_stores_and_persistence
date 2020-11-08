@@ -1,6 +1,7 @@
 package com.udacity.jdnd.course3.critter.entities.user;
 
 import com.udacity.jdnd.course3.critter.entities.pet.Pet;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,17 +20,20 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Nationalized
     private String name;
     private String phoneNumber;
+    @Nationalized
     private String notes;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner", cascade = {CascadeType.REMOVE})
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = {CascadeType.REMOVE})
     private List<Pet> pets;
 
     public void addPet(Pet pet){
         if(pets == null){
             pets = new ArrayList<>();
         }
+        if(pets.contains(pet)) return;
         pets.add(pet);
         pet.setOwner(this);
     }

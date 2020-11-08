@@ -8,7 +8,6 @@ import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Persistence;
 import javax.transaction.Transactional;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -18,6 +17,7 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 @Service
+@Transactional
 public class UserService {
     @Autowired
     private CustomerRepository customerRepository;
@@ -79,5 +79,9 @@ public class UserService {
             }
         });
         return foundEmployees;
+    }
+
+    public List<Employee> findByIdIn(Long[] idArray) {
+        return employeeRepository.findByIdIn(idArray);
     }
 }

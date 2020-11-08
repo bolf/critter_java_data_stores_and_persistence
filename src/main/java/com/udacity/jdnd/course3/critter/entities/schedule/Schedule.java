@@ -16,19 +16,15 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "schedule_employees", joinColumns = {@JoinColumn(name = "schedule_id")},
-            inverseJoinColumns = {@JoinColumn(name = "employee_id")})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Employee> employees;
 
-    @ManyToMany
-    @JoinTable(name = "schedule_pets", joinColumns = {@JoinColumn(name = "schedule_id")},
-            inverseJoinColumns = {@JoinColumn(name = "pet_id")})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Pet> pets;
 
     private LocalDate date;
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection
     @Enumerated
     private Set<EmployeeSkill> activities;
 

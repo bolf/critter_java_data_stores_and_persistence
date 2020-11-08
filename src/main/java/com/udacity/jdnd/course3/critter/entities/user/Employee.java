@@ -1,5 +1,7 @@
 package com.udacity.jdnd.course3.critter.entities.user;
 
+import org.hibernate.annotations.Nationalized;
+
 import javax.persistence.*;
 import java.time.DayOfWeek;
 import java.util.Set;
@@ -17,11 +19,15 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Nationalized
     private String name;
-    @ElementCollection(fetch = FetchType.EAGER)
+
+    @ElementCollection(fetch = FetchType.LAZY)
     @Enumerated
     private Set<EmployeeSkill> skills;
-    @ElementCollection(fetch = FetchType.EAGER)
+
+    @ElementCollection(fetch = FetchType.LAZY)
     @Enumerated
     private Set<DayOfWeek> daysAvailable;
 

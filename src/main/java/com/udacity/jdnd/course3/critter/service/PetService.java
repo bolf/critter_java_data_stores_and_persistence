@@ -39,4 +39,11 @@ public class PetService {
     }
 
 
+    public List<Pet> findByIdIn(Long[] idArray) {
+        return petRepository.findByIdIn(idArray);
+    }
+
+    public Iterable<Pet> getAllPetsById(List<Long> petIds) {
+        return petRepository.findAllById(petIds);
+    }
 }

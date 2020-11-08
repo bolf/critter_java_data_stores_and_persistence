@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 @Transactional
 public interface PetRepository extends CrudRepository<Pet,Long> {
-    List< Pet > getPetsByOwnerId(Long ownerId);
+    List<Pet> getPetsByOwnerId(Long ownerId);
+    List<Pet> findByIdIn(Long[] petIds);
 }
