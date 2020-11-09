@@ -1,6 +1,6 @@
-package com.udacity.jdnd.course3.critter.entities.user;
+package com.udacity.jdnd.course3.critter.entitie.user;
 
-import com.udacity.jdnd.course3.critter.entities.pet.Pet;
+import com.udacity.jdnd.course3.critter.entitie.pet.Pet;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
@@ -24,6 +24,7 @@ public class Customer {
     private String name;
     private String phoneNumber;
     @Nationalized
+    @Column(length = 1024)
     private String notes;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = {CascadeType.REMOVE})

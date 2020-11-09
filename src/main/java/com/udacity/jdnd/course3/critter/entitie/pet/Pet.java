@@ -1,6 +1,6 @@
-package com.udacity.jdnd.course3.critter.entities.pet;
+package com.udacity.jdnd.course3.critter.entitie.pet;
 
-import com.udacity.jdnd.course3.critter.entities.user.Customer;
+import com.udacity.jdnd.course3.critter.entitie.user.Customer;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
@@ -16,6 +16,8 @@ public class Pet {
     @Nationalized
     private String name;
     private LocalDate birthDate;
+    @Nationalized
+    @Column(length = 1024)
     private String notes;
 
     @ManyToOne(fetch = FetchType.LAZY)

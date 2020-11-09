@@ -1,8 +1,8 @@
 package com.udacity.jdnd.course3.critter.service;
 
-import com.udacity.jdnd.course3.critter.entities.user.Customer;
-import com.udacity.jdnd.course3.critter.entities.user.Employee;
-import com.udacity.jdnd.course3.critter.entities.user.EmployeeSkill;
+import com.udacity.jdnd.course3.critter.entitie.user.Customer;
+import com.udacity.jdnd.course3.critter.entitie.user.Employee;
+import com.udacity.jdnd.course3.critter.entitie.user.EmployeeSkill;
 import com.udacity.jdnd.course3.critter.repository.CustomerRepository;
 import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.udacity.jdnd.course3.critter.service;
 
-import com.udacity.jdnd.course3.critter.entities.pet.Pet;
+import com.udacity.jdnd.course3.critter.entitie.pet.Pet;
 import com.udacity.jdnd.course3.critter.repository.CustomerRepository;
 import com.udacity.jdnd.course3.critter.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,6 @@ public class PetService {
     public Iterable<Pet> getAllPets(){
         return petRepository.findAll();
     }
-
 
     public List<Pet> findByIdIn(Long[] idArray) {
         return petRepository.findByIdIn(idArray);

@@ -1,8 +1,8 @@
-package com.udacity.jdnd.course3.critter.entities.schedule;
+package com.udacity.jdnd.course3.critter.entitie.schedule;
 
-import com.udacity.jdnd.course3.critter.entities.pet.Pet;
-import com.udacity.jdnd.course3.critter.entities.user.Employee;
-import com.udacity.jdnd.course3.critter.entities.user.EmployeeSkill;
+import com.udacity.jdnd.course3.critter.entitie.pet.Pet;
+import com.udacity.jdnd.course3.critter.entitie.user.Employee;
+import com.udacity.jdnd.course3.critter.entitie.user.EmployeeSkill;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,15 +15,11 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Employee> employees;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Pet> pets;
-
     private LocalDate date;
-
     @ElementCollection
     @Enumerated
     private Set<EmployeeSkill> activities;

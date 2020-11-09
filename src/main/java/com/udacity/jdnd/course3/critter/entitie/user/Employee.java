@@ -1,4 +1,4 @@
-package com.udacity.jdnd.course3.critter.entities.user;
+package com.udacity.jdnd.course3.critter.entitie.user;
 
 import org.hibernate.annotations.Nationalized;
 
@@ -19,14 +19,11 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Nationalized
     private String name;
-
     @ElementCollection(fetch = FetchType.LAZY)
     @Enumerated
     private Set<EmployeeSkill> skills;
-
     @ElementCollection(fetch = FetchType.LAZY)
     @Enumerated
     private Set<DayOfWeek> daysAvailable;

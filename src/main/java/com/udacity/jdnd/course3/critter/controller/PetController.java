@@ -1,8 +1,7 @@
 package com.udacity.jdnd.course3.critter.controller;
 
-import com.udacity.jdnd.course3.critter.entities.pet.Pet;
-import com.udacity.jdnd.course3.critter.entities.pet.PetDTO;
-import com.udacity.jdnd.course3.critter.entities.user.Customer;
+import com.udacity.jdnd.course3.critter.entitie.pet.Pet;
+import com.udacity.jdnd.course3.critter.entitie.pet.PetDTO;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import com.udacity.jdnd.course3.critter.service.UserService;
 import org.springframework.beans.BeanUtils;

@@ -1,8 +1,6 @@
 package com.udacity.jdnd.course3.critter.repository;
 
-import com.udacity.jdnd.course3.critter.entities.schedule.Schedule;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
+import com.udacity.jdnd.course3.critter.entitie.schedule.Schedule;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

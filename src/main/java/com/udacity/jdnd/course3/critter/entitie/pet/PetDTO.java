@@ -1,4 +1,4 @@
-package com.udacity.jdnd.course3.critter.entities.pet;
+package com.udacity.jdnd.course3.critter.entitie.pet;
 
 import java.time.LocalDate;
 

@@ -1,9 +1,9 @@
 package com.udacity.jdnd.course3.critter.controller;
 
-import com.udacity.jdnd.course3.critter.entities.pet.Pet;
-import com.udacity.jdnd.course3.critter.entities.schedule.Schedule;
-import com.udacity.jdnd.course3.critter.entities.schedule.ScheduleDTO;
-import com.udacity.jdnd.course3.critter.entities.user.Employee;
+import com.udacity.jdnd.course3.critter.entitie.pet.Pet;
+import com.udacity.jdnd.course3.critter.entitie.schedule.Schedule;
+import com.udacity.jdnd.course3.critter.entitie.schedule.ScheduleDTO;
+import com.udacity.jdnd.course3.critter.entitie.user.Employee;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import com.udacity.jdnd.course3.critter.service.ScheduleService;
 import com.udacity.jdnd.course3.critter.service.UserService;

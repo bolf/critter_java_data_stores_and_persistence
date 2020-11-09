@@ -1,14 +1,11 @@
 package com.udacity.jdnd.course3.critter.controller;
 
-import com.udacity.jdnd.course3.critter.entities.pet.Pet;
-import com.udacity.jdnd.course3.critter.entities.user.Employee;
-import com.udacity.jdnd.course3.critter.repository.CustomerRepository;
-import com.udacity.jdnd.course3.critter.entities.user.Customer;
-import com.udacity.jdnd.course3.critter.entities.user.DTOs.CustomerDTO;
-import com.udacity.jdnd.course3.critter.entities.user.DTOs.EmployeeDTO;
-import com.udacity.jdnd.course3.critter.entities.user.DTOs.EmployeeRequestDTO;
-import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
-import com.udacity.jdnd.course3.critter.repository.PetRepository;
+import com.udacity.jdnd.course3.critter.entitie.pet.Pet;
+import com.udacity.jdnd.course3.critter.entitie.user.Employee;
+import com.udacity.jdnd.course3.critter.entitie.user.Customer;
+import com.udacity.jdnd.course3.critter.entitie.user.DTOs.CustomerDTO;
+import com.udacity.jdnd.course3.critter.entitie.user.DTOs.EmployeeDTO;
+import com.udacity.jdnd.course3.critter.entitie.user.DTOs.EmployeeRequestDTO;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import com.udacity.jdnd.course3.critter.service.UserService;
 import org.springframework.beans.BeanUtils;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -121,5 +117,4 @@ public class UserController {
         BeanUtils.copyProperties(employee,employeeDTO);
         return employeeDTO;
     }
-
 }
